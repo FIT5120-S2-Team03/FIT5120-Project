@@ -2,7 +2,14 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import UVCard from '../components/UVCard';
 import WarningCard from '../components/WarningCard';
-import { melbourneData } from '../mockData';
+import { veryhighUVData } from '../mockData';
+import { moderateUVData } from '../mockData';
+import { extremeUVData } from '../mockData';
+import { lowUVData } from '../mockData';
+
+import { highUVData } from '../mockData';
+
+import { getUVLevel } from '../uvConfig';
 
 const ResultsPage = () => {
   const navigate = useNavigate();
@@ -11,7 +18,10 @@ const ResultsPage = () => {
   const searchedLocation = location.state?.location || 'Melbourne';
 
   // TODO: replace with API call based on searchedLocation
-  const uvData = melbourneData;
+  const uvData = highUVData;
+
+  // Derive UV level info (label, warning_text, damage_time, progress) from uv_index
+  const uvLevel = getUVLevel(uvData.uv_index);
 
   const handleBack = () => {
     navigate('/');
@@ -35,13 +45,13 @@ const ResultsPage = () => {
         <UVCard
           location={uvData.location}
           uvIndex={uvData.uv_index}
-          label={uvData.label}
-          progress={uvData.progress}
+          label={uvLevel.label}
+          progress={uvLevel.progress}
         />
 
         <WarningCard
-          warningText={uvData.warning_text}
-          damageTime={uvData.damage_time}
+          warningText={uvLevel.warning_text}
+          damageTime={uvLevel.damage_time}
         />
       </div>
     </div>

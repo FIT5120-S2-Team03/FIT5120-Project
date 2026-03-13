@@ -5,10 +5,11 @@ const UVCard = ({ location, uvIndex, label, progress }) => {
 
   // gradient based on UV index only
   const getGradientStyle = () => {
-    if (uvIndex >= 8) return { background: 'linear-gradient(135deg, #FF6B35 0%, #C41E3A 100%)' };
-    if (uvIndex >= 6) return { background: 'linear-gradient(135deg, #FFD93D 0%, #FF8C42 100%)' };
-    if (uvIndex >= 3) return { background: 'linear-gradient(135deg, #FFF9C4 0%, #FFB74D 100%)' };
-    return { background: 'linear-gradient(135deg, #81C784 0%, #4DB6AC 100%)' };
+    if (uvIndex >= 11) return { background: 'linear-gradient(135deg, #AB47BC 0%, #6A1B9A 100%)' }; // extreme: purple
+    if (uvIndex >= 8)  return { background: 'linear-gradient(135deg, #EF5350 0%, #B71C1C 100%)' }; // very high: red
+    if (uvIndex >= 6)  return { background: 'linear-gradient(135deg, #FFA726 0%, #E65100 100%)' }; // high: orange
+    if (uvIndex >= 3)  return { background: 'linear-gradient(135deg, #FDD835 0%, #F57F17 100%)' }; // moderate: yellow
+    return { background: 'linear-gradient(135deg, #66BB6A 0%, #1B5E20 100%)' };                    // low: green
   };
 
   return (

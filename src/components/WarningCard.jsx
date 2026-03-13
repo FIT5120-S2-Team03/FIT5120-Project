@@ -3,7 +3,7 @@ import React from 'react';
 const WarningCard = ({ warningText, damageTime }) => {
   // highlight the damage time value in the warning text
   const renderWarningText = () => {
-    const timePattern = new RegExp(`(${damageTime}\\s*mins?)`, 'gi');
+    const timePattern = new RegExp(`(${damageTime}\\s*minutes?)`, 'gi');
     const parts = warningText.split(timePattern);
 
     return parts.map((part, index) =>

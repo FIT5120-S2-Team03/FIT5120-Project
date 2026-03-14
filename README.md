@@ -8,7 +8,11 @@ FIT5120 Team 03 Project, Monash University, S2 2026
 
 
 ## Description
+Backend API endpoint:
+/api/uv?postcode=XXXX
 
+Example:
+/api/uv?postcode=3000
 
 ## Team Members
 * Jianyao Zhou (Data Science)  

@@ -22,8 +22,8 @@ def get_uv():
     uv_index = data.get("value", 0)
 
     return jsonify({
+        "success": True,
         "location": "Melbourne",
-        "postcode": postcode,
         "uv_index": uv_index
     })
 

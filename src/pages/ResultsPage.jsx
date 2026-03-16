@@ -2,14 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import UVCard from '../components/UVCard';
 import WarningCard from '../components/WarningCard';
-import { veryhighUVData } from '../mockData';
-import { moderateUVData } from '../mockData';
-import { extremeUVData } from '../mockData';
-import { lowUVData } from '../mockData';
-
-import { highUVData } from '../mockData';
-
-
 import { getUVLevel } from '../uvConfig';
 
 const ResultsPage = () => {
@@ -25,7 +17,7 @@ useEffect(() => {
   const fetchUVData = async () => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/api/uv?postcode=${searchedLocation}`
+        `http://127.0.0.1:5001/api/uv?postcode=${searchedLocation}`
       );
       const data = await response.json();
       setUvData(data);

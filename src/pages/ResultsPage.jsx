@@ -33,7 +33,7 @@ useEffect(() => {
   };
 
   fetchUVData();
-}, [searchedLocation]);
+}, [searchedLocation, navigate]);
 
 if (loading) return <div>Loading...</div>;
 if (!uvData) return <div>Something went wrong</div>;

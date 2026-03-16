@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import UVCard from '../components/UVCard';
 import WarningCard from '../components/WarningCard';
@@ -9,6 +9,7 @@ import { lowUVData } from '../mockData';
 
 import { highUVData } from '../mockData';
 
+
 import { getUVLevel } from '../uvConfig';
 
 const ResultsPage = () => {
@@ -17,8 +18,29 @@ const ResultsPage = () => {
 
   const searchedLocation = location.state?.location || 'Melbourne';
 
-  // TODO: replace with API call based on searchedLocation
-  const uvData = highUVData;
+  const [uvData, setUvData] = useState(null);
+const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  const fetchUVData = async () => {
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:5000/api/uv?postcode=${searchedLocation}`
+      );
+      const data = await response.json();
+      setUvData(data);
+    } catch (error) {
+      console.error('Failed to fetch UV data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchUVData();
+}, [searchedLocation]);
+
+if (loading) return <div>Loading...</div>;
+if (!uvData) return <div>Something went wrong</div>;
 
   // Derive UV level info (label, warning_text, damage_time, progress) from uv_index
   const uvLevel = getUVLevel(uvData.uv_index);

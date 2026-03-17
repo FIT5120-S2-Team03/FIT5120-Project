@@ -36,10 +36,6 @@ const HomePage = () => {
     }
   };
 
-  const handleUseCurrentLocation = () => {
-    navigate('/results', { state: { location: 'Melbourne' } });
-  };
-
   const handleDismissError = () => {
     setShowError(false);
   };
@@ -89,26 +85,6 @@ const HomePage = () => {
         </p>
 
         <SearchBar onSearch={handleSearch} />
-
-        <button onClick={handleUseCurrentLocation} style={styles.locationButton}>
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#6B7280"
-            strokeWidth="2"
-            style={styles.locationIcon}
-          >
-            <circle cx="12" cy="12" r="3" />
-            <circle cx="12" cy="12" r="10" />
-            <line x1="12" y1="2" x2="12" y2="4" />
-            <line x1="12" y1="20" x2="12" y2="22" />
-            <line x1="2" y1="12" x2="4" y2="12" />
-            <line x1="20" y1="12" x2="22" y2="12" />
-          </svg>
-          Use Current Location
-        </button>
       </div>
     </div>
   );
@@ -196,22 +172,6 @@ const styles = {
     lineHeight: '1.6',
     margin: '0 0 40px 0',
     maxWidth: '320px',
-  },
-  locationButton: {
-    backgroundColor: 'transparent',
-    border: 'none',
-    color: '#6B7280',
-    fontSize: '15px',
-    fontWeight: '500',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    padding: '12px',
-    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-  },
-  locationIcon: {
-    flexShrink: 0,
   },
 };
 

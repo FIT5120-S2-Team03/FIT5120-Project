@@ -17,7 +17,7 @@ useEffect(() => {
   const fetchUVData = async () => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:5001/api/uv?postcode=${searchedLocation}`
+        `https://fit5120-project-47j6.onrender.com/api/uv?postcode=${searchedLocation}`
       );
       const data = await response.json();
       if (!data.success) {
@@ -33,7 +33,7 @@ useEffect(() => {
   };
 
   fetchUVData();
-}, [searchedLocation]);
+}, [searchedLocation, navigate]);
 
 if (loading) return <div>Loading...</div>;
 if (!uvData) return <div>Something went wrong</div>;

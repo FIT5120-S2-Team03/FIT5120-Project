@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Show error passed back from ResultsPage
+  useEffect(() => {
+    if (location.state?.error) {
+      setErrorMessage(location.state.error);
+      setShowError(true);
+    }
+  }, [location.state]);
 
   // auto-dismiss after 3s
   useEffect(() => {

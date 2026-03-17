@@ -20,6 +20,10 @@ useEffect(() => {
         `http://127.0.0.1:5001/api/uv?postcode=${searchedLocation}`
       );
       const data = await response.json();
+      if (!data.success) {
+        navigate('/', { state: { error: data.message } });
+        return;
+      }
       setUvData(data);
     } catch (error) {
       console.error('Failed to fetch UV data:', error);
